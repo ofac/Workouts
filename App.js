@@ -16,6 +16,7 @@ export default function App() {
       </View>
       <FlatList 
         data={exercises}
+        keyExtractor={(item, index) => item.name + index}
         renderItem={({item, index}) => <ExcerciseListItem item = {item} index={index} />}
       />
       <StatusBar style="auto" />

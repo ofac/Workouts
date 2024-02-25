@@ -6,8 +6,8 @@ export default function ExcerciseListItem({item, index}) {
     return (
       <View style={styles.exerciseContainer}>
         <Text style={styles.exerciseName}>{index + 1}. {item.name}</Text>
-        <Text style={{color: 'dimgray'}}>
-          {item.muscle.charAt(0).toUpperCase() + item.muscle.slice(1)} | {item.equipment.charAt(0).toUpperCase() + item.equipment.slice(1)}
+        <Text style={{color: 'dimgray', textTransform: 'capitalize'}}>
+          {item.muscle} | {item.equipment}
         </Text>
       </View>
     )
