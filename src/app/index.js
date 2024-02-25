@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, FlatList } from 'react-native';
-import exercises from './assets/data/exercises.json';
-import ExcerciseListItem from './src/components/ExcerciseListItem';
+import exercises from '../../assets/data/exercises.json';
+import ExcerciseListItem from '../../src/components/ExcerciseListItem';
 
 export default function App() {
 
@@ -11,7 +11,7 @@ export default function App() {
         <Text style={styles.title}>Workout App</Text>
         <Image
           style={styles.logo}
-          source={require('./assets/icon-dumbell.png')}
+          source={require('../../assets/icon-dumbell.png')}
         />
       </View>
       <FlatList 
@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#111',
     justifyContent: 'center',
-    padding: 10,
-    paddingTop: 70
+    padding: 10
   },
   containerHeader: {
     display: 'flex',
