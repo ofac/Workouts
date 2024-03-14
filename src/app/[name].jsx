@@ -3,9 +3,11 @@ import { useLocalSearchParams } from "expo-router";
 import exercises from '../../assets/data/exercises.json';
 import { Link } from 'expo-router';
 import { Stack } from 'expo-router'
+import { useState } from 'react'
 
 export default function ExerciseDetailsScreen() {
-    const params = useLocalSearchParams();
+    const params = useLocalSearchParams()
+    const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false)
     const exercise = exercises.find(item => item.name === params.name);
     if (!exercise) {
         return (
@@ -23,8 +25,11 @@ export default function ExerciseDetailsScreen() {
                 <Text style={{color: 'dimgray', textTransform: 'capitalize', marginBottom: 20}}>
                     {exercise.difficulty}
                 </Text>
-                <Text style={{color: 'white'}}>
+                <Text style={{color: 'white'}} numberOfLines={isInstructionsExpanded ? 0 : 8}>
                     {exercise.instructions}
+                </Text>
+                <Text onPress={() => setIsInstructionsExpanded(!isInstructionsExpanded) } style={styles.seeMore}>
+                    {isInstructionsExpanded ? 'See less' : 'See more'}
                 </Text>
                 <Link href={'/'} style={styles.backButton}>
                     <Text> &larr; Back</Text>
@@ -50,8 +55,14 @@ const styles = StyleSheet.create({
       fontSize: 24, 
       fontWeight: '500'
     },
+    seeMore: {
+        alignSelf: 'center',
+        padding: 10,
+        color: 'gray',
+        fontWeight: '700'
+    },
     backButton: { 
-        marginTop: 120, 
+        marginTop: 10, 
         color: 'white', 
         padding: 10, 
         backgroundColor: '#333',
